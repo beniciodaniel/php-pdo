@@ -54,4 +54,12 @@ class Categoria
         $conexao = Conexao::pegarConexao();
         $conexao->exec($query);
     }
+
+
+    public function excluir()
+    {
+         $query = "DELETE FROM categorias WHERE id = " . $this->id;
+         $conexao = Conexao::pegarConexao();
+         $conexao->exec($query);
+    }
 }
