@@ -1,7 +1,18 @@
-<?php require_once 'classes/Categoria.php'; ?>
+<?php require_once 'global.php'; ?>
 <?php
+    try {
     $categoria = new Categoria();
     $lista = $categoria->listar();
+    } catch (Exception $exception) {
+        if (DEBUG) {
+            echo '<pre>';
+            print_r($exception);
+            echo '</pre>';
+        } else {
+            echo $exception->getMessage();
+        }
+        exit;
+    }
 ?>
 <?php require_once 'cabecalho.php' ?>
 <div class="row">
@@ -12,7 +23,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <a href="categorias-criar.php" class="btn btn-info btn-block">Crair Nova Categoria</a>
+        <a href="categorias-criar.php" class="btn btn-info btn-block">Criar Nova Categoria</a>
     </div>
 </div>
 
