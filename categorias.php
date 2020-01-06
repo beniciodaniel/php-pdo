@@ -4,14 +4,7 @@
     $categoria = new Categoria();
     $lista = $categoria->listar();
     } catch (Exception $exception) {
-        if (DEBUG) {
-            echo '<pre>';
-            print_r($exception);
-            echo '</pre>';
-        } else {
-            echo $exception->getMessage();
-        }
-        exit;
+        Erro::trataErro($exception);
     }
 ?>
 <?php require_once 'cabecalho.php' ?>
