@@ -9,7 +9,7 @@
     <div class="col-md-6 col-md-offset-3">
 
         <?php echo $exception->getMessage(); ?>
-        
+
     </div>
 </div>
 
