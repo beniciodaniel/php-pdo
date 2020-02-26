@@ -16,9 +16,9 @@ class Categoria
     }
 
 
-    public function listar()
+    public static function listar()
     {
-        $query = "SELECT id, nome FROM categorias";
+        $query = "SELECT id, nome FROM categorias ORDER BY nome";
         $conexao = Conexao::pegarConexao();
         $resultado = $conexao->query($query);
         $lista = $resultado->fetchAll();
@@ -56,8 +56,8 @@ class Categoria
 
     public function excluir()
     {
-         $query = "DELETE FROM categorias WHERE id = " . $this->id;
-         $conexao = Conexao::pegarConexao();
-         $conexao->exec($query);
+        $query = "DELETE FROM categorias WHERE id = " . $this->id;
+        $conexao = Conexao::pegarConexao();
+        $conexao->exec($query);
     }
 }
