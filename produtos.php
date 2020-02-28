@@ -2,8 +2,7 @@
 
 <?php 
     try {
-        $lista = Produto::listar();
-        
+        $lista = Produto::listar();        
     } catch (Exception $erro) {
         Erro::trataErro($erro);
     }
@@ -47,7 +46,7 @@
                         <td><?php echo $linha['quantidade']?></td>
                         <td><?php echo $linha['categoria_nome']?></td>
                         <td><a href="/produtos-editar.php?id=<?php echo $linha['id']?>" class="btn btn-info">Editar</a></td>
-                        <td><a href="/produtos-excluir-post?id=<?php echo $linha['id']?>" class="btn btn-danger">Excluir</a></td>
+                        <td><a href="/produtos-excluir-post.php?id=<?php echo $linha['id']?>" class="btn btn-danger">Excluir</a></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
