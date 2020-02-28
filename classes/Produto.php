@@ -54,4 +54,17 @@ class Produto
     $stmt->bindValue(':categoria_id', $this->categoria_id);
     $stmt->execute();
   }
+
+  public function atualizar()
+  {
+    $query = "UPDATE produtos SET nome = :nome, preco = :preco, quantidade = :quantidade, categoria_id = :categoria_id WHERE id = :id"  ;
+    $conexao = Conexao::pegarConexao();
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(":nome", $this->nome);
+    $stmt->bindValue(":preco", $this->preco);
+    $stmt->bindValue(":quantidade", $this->quantidade);
+    $stmt->bindValue(":categoria_id", $this->categoria_id);
+    $stmt->bindValue(":id", $this->id);
+    $stmt->execute();
+  }
 }
