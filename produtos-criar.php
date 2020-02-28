@@ -35,7 +35,7 @@
                     <select class="form-control" name="categoria_id">
                         <option selected disabled value="0">Selecione...</option>
                         <?php foreach ($listaCategoria as $linha): ?>
-                            <option value="<?php echo $linha['categoria_id'] ?>"><?php echo $linha['nome'] ?></option>                        
+                            <option value="<?php echo $linha['id'] ?>"><?php echo $linha['nome'] ?></option>                        
                         <?php endforeach ?>
                     </select>
                 </div>
