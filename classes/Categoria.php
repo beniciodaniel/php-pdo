@@ -5,6 +5,7 @@ class Categoria
 
     public $id;
     public $nome;
+    public $produtos;
 
 
     public function __construct($id = false)
@@ -36,8 +37,7 @@ class Categoria
         $stmt->execute();
 
         $linha = $stmt->fetch();
-        $this->nome = $linha['nome'];
-        
+        $this->nome = $linha['nome'];        
     }
     
     
@@ -72,5 +72,11 @@ class Categoria
 
         $stmt->bindValue(':id', $this->id); 
         $stmt->execute();
+    }
+
+
+    public function carregarProdutos()
+    {
+        $this->produtos = Produto::listarPorCategoria($this->id);        
     }
 }

@@ -1,3 +1,16 @@
+<?php require_once 'global.php' ?>
+
+<?php 
+    try {
+        $id = $_GET['id'];
+        $categoria = new Categoria($id);
+        $categoria->carregarProdutos();
+        $produtos = $categoria->produtos;
+    } catch (Exception $e) {
+        Erro::trataErro($e);
+    }
+?>
+
 <?php require_once 'cabecalho.php' ?>
 <div class="row">
     <div class="col-md-12">
@@ -7,15 +20,22 @@
 
 <dl>
     <dt>ID</dt>
-    <dd>1</dd>
+    <dd><?php echo $categoria->id ?></dd>
     <dt>Nome</dt>
-    <dd>Livros</dd>
+    <dd><?php echo $categoria->nome ?></dd>
     <dt>Produtos</dt>
-    <dd>
-        <ul>
-            <li><a href="/produtos-editar.php">Senhor dos Aneis</a></li>
-            <li><a href="/produtos-editar.php">O Guia do Mochileiro das Galáxias</a></li>
-        </ul>
-    </dd>
+    <?php if (count($produtos) > 0): ?>
+        <dd>
+            <ul>
+                <?php foreach ($produtos as $produto): ?>                
+                    <li><a href="/produtos-editar.php?id=<?php echo $produto['id']?>"><?php echo $produto['nome'] ?></a></li>            
+                <?php endforeach ?>
+            </ul>
+        </dd>
+    <?php else: ?>
+        <div class="text-danger">
+            <p>Nenhum produto cadastrado</p>
+        </div>  
+    <?php endif ?>
 </dl>
 <?php require_once 'rodape.php' ?>
